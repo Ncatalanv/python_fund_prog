@@ -1,0 +1,118 @@
+"""print("Ejercicio 1 - Contar carácteres")
+
+caracter = input("Ingresa un carácter: ")
+contar = len(caracter)
+
+print(f"La palabra {caracter} tiene {contar} letras.")"""
+
+"""print("Ejercicio 2 - Convetir a mayúsculas")
+
+palabra = input("Ingresa una palabra para convertirla a mayúscula: ")
+mayus = palabra.upper()
+
+print(mayus)"""
+
+"""print("Ejercicio 3: Reemplazo de vocales.")
+
+frase = input("Escriba una frase y reemplazaré las 'a' por '@': ")
+reemplazo = frase.replace("a", "@")
+print(reemplazo)"""
+
+"""print("Ejercicio 4: Mostrar primeras letras.")
+
+palabra = input("Ingresa una palabra y mostraré sus primeras 3 letras: ")
+print(palabra[0:3])"""
+
+"""print("Ejercicio 5: Eliminar vocales.")
+frase = input("Ingresa una frase y eliminaré sus vocales minúsculas: ")
+
+sin_vocal = frase.replace("a", "").replace("e", "").replace("i", "").replace("o", "").replace("u", "")
+
+print(sin_vocal)"""
+
+"""print("Ejercicio 6: Limpiar y contar palabras.")
+frase = input("Dame una frase y te diré cuantas palabras tiene sin espacios: ")
+
+espacios = frase.strip()
+separador = espacios.split()
+count = len(separador)
+print(f"La frase '{frase}' tiene {count} palabras.")
+"""
+
+"""print("Ejercicio 7: Reemplazo masivo y conversión.")
+
+frase = input("Ingresa una frase y cambiaré las vocales por * en mayus: ")
+
+reemp = frase.replace("a", "*").replace("e","*").replace("i","*").replace("o","*").replace("u","*")
+mayus = reemp.upper()
+print(mayus)"""
+
+"""print("Ejercicio 8: Comparar longitudes.")
+
+pal1 = input("Ingrese la primera palabra: ")
+pal2 = input("Ingrese la segunda palabra: ")
+
+long1 = len(pal1)
+long2 = len(pal2)
+
+print(f"Palabra 1 tiene una longitud de {long1} y palabra 2 tiene una longitud de {long2}.")"""
+
+"""print("Ejercicio 9: Buscar una palabra. Se buscará una palabra en base a la frase que me des.")
+frase = input("Ingrese una frase: ")
+palabra = input("Ingrese la palabra a buscar: ")
+
+posicion = frase.find(palabra)
+
+print(f"La palabra '{palabra}' se encuentra en la posición {posicion}.")"""
+
+"""print("Ejercicio 10: Texto limpio y en minúsculas.")
+txt = input("Ingrese un texto con espacios al inicio/ final y te daré un texto limpio: ")
+
+limpio = txt.strip()
+min = limpio.lower()
+reemplazo = min.replace(".", ",")
+
+print(reemplazo)"""
+
+
+"""print("Ejercicio 11: Eliminar espacios dobles")
+frase = input("Ingrese una frase y reemplazaré espacios dobles por un espacio: ")
+
+espacios = frase.replace("  ", " ")
+print(espacios)"""
+
+"""print("Ejercicio 12: Convertir a 'formato clave'")
+frase = input("Ingrese una frase y la convertiré en clave: ")
+
+min = frase.lower()
+no_spaces = min.replace(" ", "")
+clave = no_spaces.replace("e","3").replace("a","4")
+
+print(clave)"""
+
+"""print("Ejercicio 13: Mostrar palabra central")
+frase = input("Ingese una frase de 3 palabras: ")
+
+separador = frase.split()
+
+print(f"La frase central es {separador[1]}")   """ 
+
+"""print("Ejercicio 14: Cuántas letras y sin espacios.")
+frase = input("Ingrese una frase y te diré cuantas letras quedan sin espacios: ")
+
+no_spaces = frase.replace(" ", "")
+count = len(no_spaces)
+
+print(f"La frase '{frase}' sin espacios queda '{no_spaces}' y tiene un total de {count} letras.")
+"""
+
+print("Ejericio 15: Iniciales de un nombre completo")
+name = input("Ingrese su nombre completo para generar identificador único: ")
+
+searcher1 = name.find(" ")
+reemp = name.replace(4, "")
+searcher2 = name.find(" ")
+"""p1 = name[0]
+p2 = name[searcher1+1]"""
+
+print(searcher1, searcher2)
