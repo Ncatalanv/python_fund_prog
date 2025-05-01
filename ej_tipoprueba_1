@@ -109,10 +109,12 @@ print(f"La frase '{frase}' sin espacios queda '{no_spaces}' y tiene un total de 
 print("Ejericio 15: Iniciales de un nombre completo")
 name = input("Ingrese su nombre completo para generar identificador único: ")
 
-searcher1 = name.find(" ")
-reemp = name.replace(4, "")
-searcher2 = name.find(" ")
-"""p1 = name[0]
-p2 = name[searcher1+1]"""
+separator = name.split()
 
-print(searcher1, searcher2)
+init1 = separator[0][0].upper()
+init2 = separator[1][0].upper()
+init3 = separator[2][0].upper()
+init4 = separator[3][0].upper()
+
+
+print(f"Tu identificador único es: {init1}{init2}{init3}{init4}")
