@@ -1,0 +1,28 @@
+import random as rd
+
+tries = 0
+contador = 3
+x = int(input("Ingresa rango de inicio: "))
+y = int(input("Ingresa rango final: "))
+rand = rd.randint(x,y)
+
+chance = int(input(f"Escoge una zona entre {x} e {y} (Tienes {contador} intentos): "))
+
+print(chance)
+
+if chance == rand:
+    print("¡Tesoro encontrado!¡Felicidades, pirata!")
+else: 
+    contador -= 1
+    chance = int(input(f"Escoge una zona entre {x} e {y} (Tienes {contador} intentos): "))
+
+    if chance == rand:
+        print("¡Tesoro encontrado!¡Felicidades, pirata!")
+    else:
+        contador -= 1
+        chance = int(input(f"Escoge una zona entre {x} e {y} (Tienes {contador} intentos): "))
+
+        if chance == rand:
+            print("¡Tesoro encontrado!¡Felicidades, pirata!")
+        else:
+            print("El tesoro seguirá pérdido por siempre...")
