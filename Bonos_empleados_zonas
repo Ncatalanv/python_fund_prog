@@ -1,0 +1,36 @@
+# Beneficios para Nuevos Empleados en una Empresa Tecnológica
+
+bono = 0
+recargo = 0
+
+nota = float(input("Ingrese nota obtenida en la evaluación: "))
+zona = input("Ingrese zona de origen (Norte, Centro o Sur): ")
+
+if nota > 6.0 and (zona == "Sur" or zona == "sur"):
+    bono = 500000 + (500000*0.25)
+    recargo = (500000*0.25)
+elif nota > 6.0 and (zona == "Centro" or zona == "centro"):
+    bono = 500000 + (500000*0.20)
+    recargo = (500000*0.20)
+elif (nota >= 5.0 and nota <= 6.0) and (zona == "Sur" or zona == "sur"):
+    bono = 500000 + (500000*0.15)
+    recargo = (500000*0.15)
+elif (nota >= 4.0 and nota < 5.0) and (zona == "Centro" or zona == "centro"):
+    bono = 500000 + (500000*0.10)
+    recargo = (500000*0.10)
+elif nota < 5.0 and (zona == "Sur" or zona == "sur"):
+    bono = 500000
+elif nota < 4.0 and (zona == "Centro" or zona == "centro"):
+    bono = 500000
+elif nota >= 5.5 and (zona == "Norte" or zona == "norte"):
+    bono = 500000 + (500000*0.12) + (500000*0.05) 
+    recargo = (500000*0.12) + (500000*0.05)
+elif nota < 5.5 and (zona == "Norte" or zona == "norte"):
+    bono = 500000 + (500000*0.12)
+    recargo = (500000*0.12)
+
+print(f"Teniendo una nota de {nota} y siendo de la zona {zona}, se le suma un recargo de ${recargo} obteniendo un bono total de ${bono}")
+
+
+
+
