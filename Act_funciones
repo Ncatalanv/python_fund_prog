@@ -1,0 +1,19 @@
+numeros = input("Ingrese una lista de números separada por espacio: ")
+
+par=0
+impar=0
+
+lista = [int(numero) for numero in numeros.split()]
+
+
+
+
+for numero in lista:
+    formula = numero%2
+    if formula == 0:
+        par += 1
+    else:
+        impar += 1
+
+
+print(f"En tu lista de número ({lista}) hay {par} números pares y {impar} números impares")
