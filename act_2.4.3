@@ -1,0 +1,13 @@
+venta_pasajes = int(input("Ingrese cuantos pasajes deseas vender: "))
+total_ingresos = 0
+
+
+for pasaje in range(venta_pasajes):
+    try:
+        precio = int(input(f"Ingrese precio del pasaje número {pasaje+1}: "))
+        total_ingresos += precio
+    except ValueError:
+        print("Error, debes ingresar un valor numérico.")
+        break
+
+print(f"El valor total de la venta es: {total_ingresos}")
