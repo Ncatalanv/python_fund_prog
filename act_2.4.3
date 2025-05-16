@@ -1,5 +1,14 @@
-venta_pasajes = int(input("Ingrese cuantos pasajes deseas vender: "))
-total_ingresos = 0
+
+cond = True
+
+while cond == True:
+    try:
+        venta_pasajes = int(input("Ingrese cuantos pasajes deseas vender: "))
+        total_ingresos = 0
+    except ValueError:
+        print("Error, debes ingresar un valor numérico.")
+    else:
+        cond = False
 
 
 for pasaje in range(venta_pasajes):
