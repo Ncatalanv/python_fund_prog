@@ -9,51 +9,73 @@ saldo_compra = 0
 compra = 0
 
 while True:
-    print("[1] - Pagar tarjeta de crédito")
-    print("[2] - Simulación de compras")
-    print("[3] - Pagar tarjeta de crédito")
-    print("[4] - Pagar tarjeta de crédito")
+    print("[1] - Consultar saldo.")
+    print("[2] - Pagar tarjeta de crédito.")
+    print("[3] - Simulación de compras.")
+    print("[4] - Salir del programa.")
     try:
         opc = int(input("Ingrese una opción: "))
     except ValueError:
         print("Error, debe ingresar un valor numérico.")
         time.sleep(2)
+        os.system("cls")
     else: 
         if opc == 1:
+            print(f"Su saldo disponible es de ${saldo_usuario}, con una deuda de ${saldo_cred} en tarjeta de crédito")
+            time.sleep(4)
+            os.system("cls")
+
+        if opc == 2:
+            os.system("cls")
             try:
                 print("--- Pagar tarjeta de crédito ---")
                 pago = int(input("Ingrese cantidad a pagar: "))
             except ValueError:
                 print("Error, se ha ingresado un número no válido.")
+                time.sleep(2)
+                os.system("cls")
             else:
                 if pago <= saldo_usuario:
                     saldo_cred += pago
                     saldo_usuario -= pago
-
                     print("Pago realizado exitosamente.")
                     print(f"Su nuevo saldo es de {saldo_usuario}, y presenta una deuda de {saldo_cred}")
                     time.sleep(4)
                     os.system("cls")
                 elif pago > saldo_usuario:
                     print("No posee suficientes fondos.")
+                    time.sleep(4)
+                    os.system("cls")
                 else:
                     print("Monto a pagar no válido.")
         
-        if opc == 2:
-            print("--- Simulación de compras ---")
-            n_compra = int(input("Ingrese cuantas compras desea realizar: "))
+        if opc == 3:
+            try:
+                print("--- Simulación de compras ---")
+                n_compra = int(input("Ingrese cuantas compras desea realizar: "))
+            except ValueError:
+                print("Error, se ha ingresado un número no válido.")
+                time.sleep(2)
+                os.system("cls")            
+            else:
+                for numero in range(n_compra):
+                    compra = int(input(f"Compra N°{numero+1}, ingrese monto de la compra: "))
+                    if compra >= 0:
+                        saldo_compra += compra
+                        print(f"Nuevo monto de la compra: ${saldo_compra}")
+                    else:
+                        print("Monto no válido.")
+                
+                saldo_usuario -= saldo_compra
+                print(f"Se ha realizado una compra por ${saldo_compra}")
+                print(f"Nuevo monto de la tarjeta es de ${saldo_usuario}")
+                time.sleep(2)
+                os.system("cls")
 
-            for numero in range(n_compra):
-                compra = int(input(f"Compra N°{numero+1}, ingrese monto de la compra: "))
-                if compra >= 0:
-                    saldo_compra += compra
-                    print(f"Nuevo monto de la compra: ${saldo_compra}")
-                else:
-                    print("Monto no válido.")
-            
-            saldo_usuario -= saldo_compra
-            print(f"Se ha realizado una compra por ${saldo_compra}")
-            print(f"Nuevo monto de la tarjeta es de ${saldo_usuario}")
+        if opc == 4:
+            print("Saliendo del programa....")
+            time.sleep(2)
+            break
 
 
                 
