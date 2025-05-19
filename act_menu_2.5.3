@@ -45,8 +45,15 @@ while True:
 
             for numero in range(n_compra):
                 compra = int(input(f"Compra N°{numero+1}, ingrese monto de la compra: "))
-                saldo_compra += compra
-                print(f"Nuevo monto de la compra: ${saldo_compra}")
+                if compra >= 0:
+                    saldo_compra += compra
+                    print(f"Nuevo monto de la compra: ${saldo_compra}")
+                else:
+                    print("Monto no válido.")
+            
+            saldo_usuario -= saldo_compra
+            print(f"Se ha realizado una compra por ${saldo_compra}")
+            print(f"Nuevo monto de la tarjeta es de ${saldo_usuario}")
 
 
                 
