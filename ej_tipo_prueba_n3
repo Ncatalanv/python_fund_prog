@@ -1,0 +1,28 @@
+while True:
+    try:
+        cantidad = int(input("Ingrese cantidad de superhéroes a registrar: "))
+    except ValueError:
+        print("Error, debes ingresar un número entero.")
+        continue
+
+    for i in range(cantidad):
+        while True:
+            print(i)
+            try:
+                nombre = input("Ingresa nombre del superhéroe: ")
+                ano = int(input("Ingresa años de experiencia: "))
+            except ValueError:
+                print("Error, debes ingresar un número entero.")
+                continue
+            else:
+                if ano <= 60:
+                    i = print(f"{nombre} es un Novato")
+                elif ano > 60:
+                    i = print(f"{nombre} es Élite")
+                else:
+                    print("Número negativo, no aplica")        
+                break
+
+        print(i)
+        break
+
