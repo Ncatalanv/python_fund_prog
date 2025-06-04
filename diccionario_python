@@ -53,6 +53,14 @@ while True:
         for i in datos["productos"]:
             print(f"Nombre: {i["nombre"]}, Cantidad: {i["cantidad"]}, Precio: {i["precio"]}")
 
-
+    elif opc == 3:
+        #Buscar productos comparando el id del diccionario con el id que ingresará el usuario
+        print("--- Buscar productos ---")
+        id_producto = int(input("Ingrese id del producto: "))
+        
+        #Se usará el for para recorrer la lista y buscar los productos
+        for i in datos["productos"]:
+            if i["id"] == id_producto:
+                print(f"Nombre: {i["nombre"]}, Cantidad: {i["cantidad"]}, Precio: {i["precio"]}")
     else:
         print("Opción no válida")
