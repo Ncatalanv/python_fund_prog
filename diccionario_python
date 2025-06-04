@@ -15,6 +15,15 @@ datos = {
                 "cantidad": 5,
                 "precio": 560
             }
+        ],
+        #Puedo tener muchas listas dentro de mi diccionario
+        "usuarios":
+        [
+             {
+                  "id":1,
+                  "correo":"",
+                  "contraseña":""
+             }
         ]
         }
 
