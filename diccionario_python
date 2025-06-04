@@ -57,10 +57,28 @@ while True:
         #Buscar productos comparando el id del diccionario con el id que ingresará el usuario
         print("--- Buscar productos ---")
         id_producto = int(input("Ingrese id del producto: "))
-        
+
         #Se usará el for para recorrer la lista y buscar los productos
         for i in datos["productos"]:
             if i["id"] == id_producto:
                 print(f"Nombre: {i["nombre"]}, Cantidad: {i["cantidad"]}, Precio: {i["precio"]}")
+
+    elif opc == 4:
+        print("--- Editar productos ---")
+        #Le pido ingresar la id del producto para buscarlo en base a esa ID
+        id_producto = int(input("¿Que producto desea editar? Ingrese id: "))
+
+        #Mediante el ciclo "for", voy a buscar el producto y si lo encuentra (if ==) lo editaremos
+        for i in datos["productos"]:
+            if i["id"] == id_producto:
+                        nombre = input("Ingrese nombre del producto: ")
+                        cantidad = int(input("Ingrese la cantidad: "))
+                        precio = int(input("Ingrese el precio: "))
+
+                        i["nombre"] = nombre
+                        i["cantidad"] = cantidad
+                        i["precio"] = precio
+                        print("Producto editado exitosamente")
+
     else:
         print("Opción no válida")
