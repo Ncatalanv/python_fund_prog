@@ -80,5 +80,19 @@ while True:
                         i["precio"] = precio
                         print("Producto editado exitosamente")
 
+    elif opc == 5:
+        print("--- Eliminar productos ---")
+        id_producto = int(input("Que producto desea eliminar? Ingrese id: "))
+
+        #Eliminaré el producto encontrado (i) de la lista
+        for i in datos["productos"]:
+            if i["id"] == id_producto:
+                 datos["productos"].remove(i)
+                 print("Producto eliminado correctamente.")
+
+    elif opc == 6:
+         print("Saliendo del programa...")
+         break          
+
     else:
         print("Opción no válida")
