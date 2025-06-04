@@ -1,0 +1,58 @@
+
+#Tenemos una lista dentro del diccionario
+datos = {
+        "productos":
+        [
+            {
+                "id": 1,
+                "nombre": "Audifonos",
+                "cantidad":10,
+                "precio":990
+            },
+            {
+                "id": 2,
+                "nombre": "Mouse",
+                "cantidad": 5,
+                "precio": 560
+            }
+        ]
+        }
+
+
+while True:
+    print("1 - Agregar productos")
+    print("2 - Mostrar productos")
+    print("3 - Buscar productos")
+    print("4 - Editar productos")
+    print("5 - Eliminar productos")
+    print("6 - Salir")
+
+    opc = int(input("Ingrese una opción 1 - 6: "))
+
+    if opc == 1:
+        #Agregar productos a la lista que está dentro del diccionario con la función "append"
+        print("--- Agregar productos ---")
+        id = int(input("Ingrese un id: "))
+        nombre = input("Ingrese nombre del producto: ")
+        cantidad = int(input("Ingrese la cantidad: "))
+        precio = int(input("Ingrese el precio: "))
+
+        producto_agregar = {
+                            "id": id,
+                            "nombre": nombre,
+                            "cantidad":cantidad,
+                            "precio":precio
+                            }
+        
+
+        datos["productos"].append(producto_agregar)
+        print("Producto agregado exitosamente.")
+
+    elif opc == 2:
+        #Mostrar los productos de la lista dentro del diccionario
+        for i in datos["productos"]:
+            print(f"Nombre: {i["nombre"]}, Cantidad: {i["cantidad"]}, Precio: {i["precio"]}")
+
+
+    else:
+        print("Opción no válida")
