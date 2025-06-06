@@ -1,3 +1,5 @@
+no_encontrado = 0
+
 datos = {
     "estudiantes":  [
                         {
@@ -36,10 +38,10 @@ while True:
             nombre = input("Ingrese nombre del estudiante: ")
             apellido = input("Ingrese apellido del estudiante: ")
             edad = int(input("Ingrese edad del estudiante: "))
+            carrera = input("Ingrese carrera a la que pertenece el estudiante: ")
             if edad <= 0:
                 print("Error, debes ingresar un número mayor a 0.")
                 continue
-            carrera = input("Ingrese carrera a la que pertenece el estudiante: ")
         except ValueError:
             print("Error, debes ingresar un número entero.")
             continue
@@ -81,6 +83,12 @@ while True:
                 i["edad"] = edad
                 i["carrera"] = carrera 
                 print("Estudiante actualizado correctamente!")
+                no_encontrado = 0
+            else:
+                no_encontrado = 1
+                
+            if no_encontrado == 1:
+                print("Estudiante no encontrado.")
 
     elif opc == 4:
         print("*** Eliminar estudiante ***")
