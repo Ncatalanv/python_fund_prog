@@ -1,11 +1,11 @@
 datos = {
     "estudiantes":  [
                         {
-                        "id": "",
-                        "nombre": "",
-                        "apellido": "",
-                        "edad": "",
-                        "carrera": ""  
+                        "id": "1",
+                        "nombre": "Nicolás",
+                        "apellido": "Catalán",
+                        "edad": "25",
+                        "carrera": "Ing. en Informática"  
                         }
                     ]   
         }
@@ -17,16 +17,32 @@ while True:
     print("3) Actualizar estudiante")
     print("4) Eliminar estudiante")
     print("5) Salir")
-    opc = int(input("Ingrese una opción 1 - 5: "))
+    try:
+        opc = int(input("Ingrese una opción 1 - 5: "))
+        if opc <= 0:
+            print("Debes ingresar un número mayor a 0.")
+            continue
+    except ValueError:
+        print("Error, debes ingresar un número entero.")
+        continue
 
     if opc == 1:
         print("*** Crear estudiante ***")
-        id = int(input("Ingrese id del estudiante: "))
-        nombre = input("Ingrese nombre del estudiante: ")
-        apellido = input("Ingrese apellido del estudiante: ")
-        edad = int(input("Ingrese edad del estudiante: "))
-        carrera = input("Ingrese carrera a la que pertenece el estudiante: ")
-
+        try:
+            id = int(input("Ingrese id del estudiante: "))
+            if id <= 0:
+                print("Error, debes ingresar un número mayor a 0.")
+                continue
+            nombre = input("Ingrese nombre del estudiante: ")
+            apellido = input("Ingrese apellido del estudiante: ")
+            edad = int(input("Ingrese edad del estudiante: "))
+            if edad <= 0:
+                print("Error, debes ingresar un número mayor a 0.")
+                continue
+            carrera = input("Ingrese carrera a la que pertenece el estudiante: ")
+        except ValueError:
+            print("Error, debes ingresar un número entero.")
+            continue
         producto_agregar =         {
                                     "id": id,
                                     "nombre": nombre,
@@ -44,7 +60,14 @@ while True:
 
     elif opc == 3:
         print("*** Actualizar estudiante ***")
-        id_buscar = int(input("Ingrese id del estudiante a actualizar: "))
+        try:
+            id_buscar = int(input("Ingrese id del estudiante a actualizar: "))
+            if id_buscar <= 0:
+                print("Debes ingresar un número mayor a 0.")
+                continue
+        except ValueError:
+            print("Error, debes ingresar un número entero.")
+            continue
 
         for i in datos["estudiantes"]:
             if id_buscar == i["id"]:
@@ -61,7 +84,14 @@ while True:
 
     elif opc == 4:
         print("*** Eliminar estudiante ***")
-        id_buscar = int(input("Ingrese id del estudiante a eliminar: "))
+        try:
+            id_buscar = int(input("Ingrese id del estudiante a eliminar: "))
+            if id_buscar <= 0:
+                print("Debes ingresar un número mayor a 0.")
+                continue
+        except ValueError:
+            print("Error, debes ingresar un número entero.")
+            continue
 
         for i in datos["estudiantes"]:
             if id_buscar == i["id"]:
