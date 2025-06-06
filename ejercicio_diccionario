@@ -1,0 +1,75 @@
+datos = {
+    "estudiantes":  [
+                        {
+                        "id": "",
+                        "nombre": "",
+                        "apellido": "",
+                        "edad": "",
+                        "carrera": ""  
+                        }
+                    ]   
+        }
+
+while True:
+    print("--- Menú gestión estudiantes ---")
+    print("1) Crear estudiante")
+    print("2) Listar estudiantes")
+    print("3) Actualizar estudiante")
+    print("4) Eliminar estudiante")
+    print("5) Salir")
+    opc = int(input("Ingrese una opción 1 - 5: "))
+
+    if opc == 1:
+        print("*** Crear estudiante ***")
+        id = int(input("Ingrese id del estudiante: "))
+        nombre = input("Ingrese nombre del estudiante: ")
+        apellido = input("Ingrese apellido del estudiante: ")
+        edad = int(input("Ingrese edad del estudiante: "))
+        carrera = input("Ingrese carrera a la que pertenece el estudiante: ")
+
+        producto_agregar =         {
+                                    "id": id,
+                                    "nombre": nombre,
+                                    "apellido": apellido,
+                                    "edad": edad,
+                                    "carrera": carrera  
+                                    }
+
+        datos["estudiantes"].append(producto_agregar)
+
+    elif opc == 2:
+        print("*** Lista completa de estudiantes ***")
+        for i in datos["estudiantes"]:
+            print(f"Id: {i["id"]}, Nombre: {i["nombre"]}, Apellido: {i["apellido"]}, Edad: {i["edad"]}, Carrera: {i["carrera"]}")
+
+    elif opc == 3:
+        print("*** Actualizar estudiante ***")
+        id_buscar = int(input("Ingrese id del estudiante a actualizar: "))
+
+        for i in datos["estudiantes"]:
+            if id_buscar == i["id"]:
+                nombre = input("Ingrese nombre del estudiante: ")
+                apellido = input("Ingrese apellido del estudiante: ")
+                edad = int(input("Ingrese edad del estudiante: "))
+                carrera = input("Ingrese la carrera a la que pertenece el estudiante: ")
+
+                i["nombre"] = nombre
+                i["apellido"] = apellido
+                i["edad"] = edad
+                i["carrera"] = carrera 
+                print("Estudiante actualizado correctamente!")
+
+    elif opc == 4:
+        print("*** Eliminar estudiante ***")
+        id_buscar = int(input("Ingrese id del estudiante a eliminar: "))
+
+        for i in datos["estudiantes"]:
+            if id_buscar == i["id"]:
+                datos["estudiantes"].remove(i)
+                print("Estudiante eliminado exitosamente.")
+
+    elif opc == 5:
+        print("Saliendo del sistema...")
+        break
+    else:
+        print("Opción no válida.")
