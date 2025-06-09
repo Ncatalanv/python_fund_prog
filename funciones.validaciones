@@ -1,0 +1,16 @@
+def validarInt(numero_entero_validar):
+    """Validar un número entero positivo"""
+    if numero_entero_validar.isdigit():
+        num = int(numero_entero_validar)
+        return num >=0
+    else:
+        return False
+
+ 
+   
+def buscarEstudiante(id_estudiante) -> dict:
+    for i in datos["estudiantes"]:
+        if i["id"] == id_estudiante:
+            return i
+
+    
