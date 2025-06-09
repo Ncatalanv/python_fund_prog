@@ -6,11 +6,4 @@ def validarInt(numero_entero_validar):
     else:
         return False
 
- 
-   
-def buscarEstudiante(id_estudiante) -> dict:
-    for i in datos["estudiantes"]:
-        if i["id"] == id_estudiante:
-            return i
-
     
