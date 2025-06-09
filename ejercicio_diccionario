@@ -1,25 +1,24 @@
 import os
 import time
 import validaciones
-no_encontrado = 0
 
 datos = {
     "estudiantes":  [
                         {
-                        "id": 1,
+                        "id": "1",
                         "nombre": "Nicolás",
                         "apellido": "Catalán",
-                        "edad": 25,
+                        "edad": "25",
                         "carrera": "Ing. en Informática"  
                         }
                     ]   
         }
 
-def buscarEstudiante(id_estudiante)-> dict:
+
+def buscarEstudiante(id_estudiante) -> dict:
     for i in datos["estudiantes"]:
         if i["id"] == id_estudiante:
             return i
-
 
 while True:
     print("--- Menú gestión estudiantes ---")
@@ -29,11 +28,9 @@ while True:
     print("4) Eliminar estudiante")
     print("5) Salir")
 
-
     opc = input("Ingrese una opción 1 - 5: ")
     if validaciones.validarInt(opc) is False:
         print("Error, debes ingresar un número entero positivo.")
-
 
     if opc == "1":
         print("*** Crear estudiante ***")
@@ -61,56 +58,44 @@ while True:
     elif opc == "2":
         print("*** Lista completa de estudiantes ***")
         for i in datos["estudiantes"]:
-            print(f"Id: {i["id"]}, Nombre: {i["nombre"]}, Apellido: {i["apellido"]}, Edad: {i["edad"]}, Carrera: {i["carrera"]}")
-
+            print(f"Id: {i['id']}, Nombre: {i['nombre']}, Apellido: {i['apellido']}, Edad: {i['edad']}, Carrera: {i['carrera']}")
     elif opc == "3":
         print("*** Actualizar estudiante ***")
         id_buscar = input("Ingrese id del estudiante a actualizar: ")
         if validaciones.validarInt(id_buscar) is False:
             print("Error, debes ingresar un número entero positivo.")
             continue
+        
+        #Search student with the function.
+        print(buscarEstudiante(id_buscar))
+        buscarEstudiante(id_buscar)
+        nombre = input("Ingrese nombre del estudiante: ")
+        apellido = input("Ingrese apellido del estudiante: ")
+        edad = input("Ingrese edad del estudiante: ")
+        if validaciones.validarInt(edad) is False:
+            print("Error, debes ingresar un número entero positivo.")
+            continue
+        carrera = input("Ingrese la carrera a la que pertenece el estudiante: ")
 
-        for i in datos["estudiantes"]:
-            if id_buscar == i["id"]:
-                nombre = input("Ingrese nombre del estudiante: ")
-                apellido = input("Ingrese apellido del estudiante: ")
-                edad = int(input("Ingrese edad del estudiante: "))
-                carrera = input("Ingrese la carrera a la que pertenece el estudiante: ")
+        i["nombre"] = nombre
+        i["apellido"] = apellido
+        i["edad"] = edad
+        i["carrera"] = carrera 
+        print("Estudiante actualizado correctamente!")
 
-                buscarEstudiante(id_buscar) = nombre
-                buscarEstudiante(id_buscar) = apellido
-                buscarEstudiante(id_buscar) = edad
-                buscarEstudiante(id_buscar) = carrera 
-                print("Estudiante actualizado correctamente!")
-                no_encontrado = 0
-            else:
-                no_encontrado = 1
-                
-            if no_encontrado == 1:
-                print("Estudiante no encontrado.")
-
-"""    elif opc == "4":
+    elif opc == "4":
         print("*** Eliminar estudiante ***")
 
-        id_buscar = int(input("Ingrese id de estudiante a eliminar: "))
-        datos["estudiantes"].remove(buscarEstudiante(id_buscar))
-
-        try:
-            id_buscar = int(input("Ingrese id del estudiante a eliminar: "))
-            if id_buscar <= 0:
-                print("Debes ingresar un número mayor a 0.")
-                continue
-        except ValueError:
-            print("Error, debes ingresar un número entero.")
+        id_buscar = input("Ingrese id del estudiante a actualizar: ")
+        if validaciones.validarInt(id_buscar) is False:
+            print("Error, debes ingresar un número entero positivo.")
             continue
 
-        for i in datos["estudiantes"]:
-            if id_buscar == i["id"]:
-                datos["estudiantes"].remove(i)
-                print("Estudiante eliminado exitosamente.")
+        datos["estudiantes"].remove(buscarEstudiante(id_buscar))
+        print("Estudiante eliminado exitosamente.")
 
     elif opc == "5":
         print("Saliendo del sistema...")
         break
     else:
-        print("Opción no válida.")"""
+        print("Opción no válida.")
