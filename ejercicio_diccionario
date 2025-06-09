@@ -1,4 +1,8 @@
+import os
+import time
+import validaciones
 no_encontrado = 0
+
 
 datos = {
     "estudiantes":  [
@@ -12,6 +16,11 @@ datos = {
                     ]   
         }
 
+def buscarEstudiante(id_estudiante)-> dict:
+    for i in datos["estudiantes"]:
+        if i["id"] == id_estudiante:
+            return i
+
 while True:
     print("--- Menú gestión estudiantes ---")
     print("1) Crear estudiante")
@@ -19,6 +28,11 @@ while True:
     print("3) Actualizar estudiante")
     print("4) Eliminar estudiante")
     print("5) Salir")
+
+
+    opc = input("Ingrese una opción 1 - 5: ")
+    print("Validación", validaciones.validarInt(opc))
+
     try:
         opc = int(input("Ingrese una opción 1 - 5: "))
         if opc <= 0:
@@ -56,6 +70,7 @@ while True:
         datos["estudiantes"].append(producto_agregar)
 
     elif opc == 2:
+
         print("*** Lista completa de estudiantes ***")
         for i in datos["estudiantes"]:
             print(f"Id: {i["id"]}, Nombre: {i["nombre"]}, Apellido: {i["apellido"]}, Edad: {i["edad"]}, Carrera: {i["carrera"]}")
@@ -78,10 +93,10 @@ while True:
                 edad = int(input("Ingrese edad del estudiante: "))
                 carrera = input("Ingrese la carrera a la que pertenece el estudiante: ")
 
-                i["nombre"] = nombre
-                i["apellido"] = apellido
-                i["edad"] = edad
-                i["carrera"] = carrera 
+                buscarEstudiante(id_buscar) = nombre
+                buscarEstudiante(id_buscar) = apellido
+                buscarEstudiante(id_buscar) = edad
+                buscarEstudiante(id_buscar) = carrera 
                 print("Estudiante actualizado correctamente!")
                 no_encontrado = 0
             else:
@@ -92,6 +107,10 @@ while True:
 
     elif opc == 4:
         print("*** Eliminar estudiante ***")
+
+        id_buscar = int(input("Ingrese id de estudiante a eliminar: "))
+        datos["estudiantes"].remove(buscarEstudiante(id_buscar))
+
         try:
             id_buscar = int(input("Ingrese id del estudiante a eliminar: "))
             if id_buscar <= 0:
