@@ -14,11 +14,14 @@ datos = {
                     ]   
         }
 
-
+#Función para buscar estudiantes en el diccionario según su ID.
 def buscarEstudiante(id_estudiante) -> dict:
+    """Buscar estudiantes según id"""
     for i in datos["estudiantes"]:
         if i["id"] == id_estudiante:
             return i
+    #Al darme False quiere decir que no existe un estudiante con esa ID.
+    return False
 
 while True:
     print("--- Menú gestión estudiantes ---")
@@ -29,6 +32,7 @@ while True:
     print("5) Salir")
 
     opc = input("Ingrese una opción 1 - 5: ")
+    #Si me arroja False en la función, me quiere decir que no es entero positivo.
     if validaciones.validarInt(opc) is False:
         print("Error, debes ingresar un número entero positivo.")
 
@@ -38,6 +42,16 @@ while True:
         if validaciones.validarInt(id) is False:
             print("Error, debes ingresar un número entero positivo.")
             continue
+        
+        #Llamo la función para buscar si existe un estudiante con esa ID.
+        buscarEstudiante(id)
+
+        #Si me da otra opción que no sea False, quiere decir que existe el estudiante.
+        if buscarEstudiante(id) != False:
+            print("Error, ya existe un estudiante con esa ID. Vuelve a intentar.")
+            continue
+        
+
         nombre = input("Ingrese nombre del estudiante: ")
         apellido = input("Ingrese apellido del estudiante: ")
         edad = input("Ingrese edad del estudiante: ")
@@ -61,14 +75,18 @@ while True:
             print(f"Id: {i['id']}, Nombre: {i['nombre']}, Apellido: {i['apellido']}, Edad: {i['edad']}, Carrera: {i['carrera']}")
     elif opc == "3":
         print("*** Actualizar estudiante ***")
+        #Me hace ingresar id para buscar estudiante y valido si es un número entero con la función.
         id_buscar = input("Ingrese id del estudiante a actualizar: ")
         if validaciones.validarInt(id_buscar) is False:
             print("Error, debes ingresar un número entero positivo.")
             continue
         
         #Search student with the function.
-        print(buscarEstudiante(id_buscar))
         buscarEstudiante(id_buscar)
+        if buscarEstudiante(id_buscar) == False:
+            print("Error, no existe un estudiante con esa ID. Vuelva a intentar.")
+            continue
+
         nombre = input("Ingrese nombre del estudiante: ")
         apellido = input("Ingrese apellido del estudiante: ")
         edad = input("Ingrese edad del estudiante: ")
