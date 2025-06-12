@@ -1,61 +1,37 @@
 #Programa que dada una lista de número, identifica y muetras los números pares e impares 
 
-def validar_lista_numeros(validar):
-    for i in validar:
-        
-
-
-
 #Crear mis listas
 pares = []
 impares = []
-lista_buena = []
 
-rango_numeros = input("Ingrese una lista de números separados por un espacio: ")
+def validar_lista_numeros(mensaje:str):
+    while True:
+        #Pongo la lista acá, asi cada vez que haya un error de reiniciará y no se acumularán.
+        lista_buena = []
+        try:
+            #Separo los números en una lista de string
+            rango_numeros = input(mensaje)
+            lista = rango_numeros.split()
+            #Mediante un bucle transformaré cada string de la lista split a int() y lo pasaré a una lista buena. 
+            for i in lista:
+                lista_buena.append(int(i))
+            return lista_buena
+        except ValueError:
+            print("Error, debes ingresar un número entero, no letras.")
+            continue
 
-#Separo los números en una lista de string
-lista = rango_numeros.split()
-
-print(validar_lista_numeros(lista))
-
-#Mediante un bucle transformaré cada string de la lista split a int() y lo pasaré a una lista buena. 
-for i in lista:
-    lista_buena.append(int(i))
-    print(lista_buena)
+#Llamar a la función con el mensaje que quiero
+lista_buena = validar_lista_numeros("Ingrese números separados por un espacio para comprobar si es par o impar: ")
 
 #Mediante el residuo comprobaré si el número es par o impar
 for i in lista_buena:
     comprobar = i%2
 
     if comprobar == 0:
-        print("par")
         pares.append(i)
     else:
-        print("impar")
         impares.append(i)
 
-print(f"Hay {len(pares)} números pares.")
-print(f"Hay {len(impares)} números impares.")
 
-
-
-
-
-
-
-"""for i in range(rango_numeros):
-    numero = int(input("Ingrese un número: "))
-
-    comprobador = numero%2
-
-
-    if comprobador == 0:
-        print("par")
-        pares.append(numero)
-    else:
-        print("impar")
-        impares.append(numero)
-
- 
-print(f"Hay {len(pares)} números pares")
-print(f"Hay {len(impares)} números impares")"""
+print(f"Números pares: {pares}")
+print(f"Números impares: {impares}")
