@@ -1,0 +1,89 @@
+datos = {
+    "peliculas":    [
+                        {
+                            "titulo": "Saw",
+                            "año": 2004,
+                            "género": "Terror",
+                            "estado": True
+                        }
+                    ]
+                }
+
+def validar_vacio(mensaje:str):
+    """Válida si un texto está vacío"""
+    while True:
+        validar = input(mensaje)
+        if len(validar) == 0:
+            print("Debes agregar algo....")
+            continue
+        break
+
+def validar_numero_entero(mensaje:str):
+    """Válida si es un número entero y está entre 1900 y 2025"""
+    while True:
+        try:
+            numero = int(input(mensaje))
+            if numero <= 0:
+                print("Error, debes ingresar un número positivo.")
+                continue
+            break
+        except ValueError:
+            print("Error, debes ingresar un número entero.")
+            continue
+
+
+
+while True:
+    print(" *** Bienvenido al menú de CineUC *** ")
+    print("1) Agregar una película")
+    print("2) Mostrar todas las películas")
+    print("3) Buscar una película")
+    print("4) Eliminar una película")
+    print("5) Agregar una película")
+    opc = int(input("Ingrese una opción 1 - 5: "))
+
+    if opc == 1:
+        print(" -- Agregar una película -- ")
+        nombre_agregar = validar_vacio("Ingrese nombre del título: ")
+
+        año_agregar = validar_numero_entero("Ingrese año de estreno: ")
+
+        genero_agregar = input("Ingrese genero de la película: ")
+        estado_agregar = input("Ingrese estado de la película (vista/ no vista): ")
+
+        pelicula_agregar =  {
+                            "titulo": nombre_agregar,
+                            "año": año_agregar,
+                            "género": genero_agregar,
+                            "estado": estado_agregar
+                            }
+        
+        datos["peliculas"].append(pelicula_agregar)
+
+        print("Película agregada exitosamente!")
+
+        print(datos["peliculas"])
+
+    elif opc == 2:
+        print(" -- Catálogo de películas -- ")
+        for i in datos["peliculas"]:
+            print(f"nombre: {i['titulo']}, año: {i['año']}, género: {i['género']}, estado: {i['estado']}")
+
+    elif opc == 3:
+        print(" -- Buscador de películas -- ")
+        nombre_buscar = input("Ingrese nombre de película a buscar: ")
+
+        for i in datos["peliculas"]:
+            if i["titulo"] == nombre_buscar:
+                print(f"nombre: {i['titulo']}, año: {i['año']}, género: {i['género']}, estado: {i['estado']}")
+
+    elif opc == 4:
+        print(" -- Eliminar una película -- ")
+        eliminar_pelicula = int(input("Ingrese id de película a eliminar."))
+
+        if i['id'] == eliminar_pelicula:
+          datos["peliculas"].remove  
+
+    elif opc == 5:
+        print("Saliendo del programa...")
+        break
