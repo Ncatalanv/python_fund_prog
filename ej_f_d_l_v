@@ -5,6 +5,12 @@ datos = {
                             "año": 2004,
                             "género": "Terror",
                             "estado": True
+                        },
+                        {
+                            "titulo": "Soy leyenda",
+                            "año": 2007,
+                            "género": "Ciencia ficción",
+                            "estado": False
                         }
                     ]
                 }
@@ -16,7 +22,7 @@ def validar_vacio(mensaje:str):
         if len(validar) == 0:
             print("Debes agregar algo....")
             continue
-        break
+        return validar
 
 def validar_numero_entero(mensaje:str):
     """Válida si es un número entero y está entre 1900 y 2025"""
@@ -26,11 +32,30 @@ def validar_numero_entero(mensaje:str):
             if numero <= 0:
                 print("Error, debes ingresar un número positivo.")
                 continue
-            break
+            return numero
         except ValueError:
             print("Error, debes ingresar un número entero.")
             continue
 
+
+def estado_pelicula(mensaje:str):
+    while True:
+        estado_funcion = input(mensaje)
+
+        if estado_funcion.lower() == "si":
+            return True
+        elif estado_funcion.lower() == "no":
+            return False 
+        else:
+            print("Error, debes ingresar solo 'si' o 'no'.")
+            continue
+
+def buscar_pelicula(mensaje:str):
+    buscador = input(mensaje)
+    for i in datos["peliculas"]:
+        if i['titulo'].lower() == buscador.lower():
+            return i
+    return False
 
 
 while True:
@@ -39,8 +64,8 @@ while True:
     print("2) Mostrar todas las películas")
     print("3) Buscar una película")
     print("4) Eliminar una película")
-    print("5) Agregar una película")
-    opc = int(input("Ingrese una opción 1 - 5: "))
+    print("5) Salir del programa")
+    opc = validar_numero_entero("Ingrese una opción 1 - 5: ")
 
     if opc == 1:
         print(" -- Agregar una película -- ")
@@ -48,8 +73,14 @@ while True:
 
         año_agregar = validar_numero_entero("Ingrese año de estreno: ")
 
-        genero_agregar = input("Ingrese genero de la película: ")
-        estado_agregar = input("Ingrese estado de la película (vista/ no vista): ")
+        if año_agregar < 1900 or año_agregar > 2025:
+            print("Error, debes ingresar un número entre 1900 y 2025.")
+            continue
+
+
+        genero_agregar = validar_vacio("Ingrese genero de la película: ")
+
+        estado_agregar = estado_pelicula("Ingrese si ha sido vista la película (si/ no): ")
 
         pelicula_agregar =  {
                             "titulo": nombre_agregar,
@@ -63,7 +94,6 @@ while True:
         print("Película agregada exitosamente!")
 
         print(datos["peliculas"])
-
     elif opc == 2:
         print(" -- Catálogo de películas -- ")
         for i in datos["peliculas"]:
@@ -71,19 +101,22 @@ while True:
 
     elif opc == 3:
         print(" -- Buscador de películas -- ")
-        nombre_buscar = input("Ingrese nombre de película a buscar: ")
+        nombre_buscar = buscar_pelicula("Ingrese nombre de película a buscar: ")
 
-        for i in datos["peliculas"]:
-            if i["titulo"] == nombre_buscar:
-                print(f"nombre: {i['titulo']}, año: {i['año']}, género: {i['género']}, estado: {i['estado']}")
-
+        if nombre_buscar == False:
+            print("No se ha encontrado la película.")
+        else:
+            print(f"nombre: {nombre_buscar['titulo']}, año: {nombre_buscar['año']}, género: {nombre_buscar['género']}, estado: {nombre_buscar['estado']}")
     elif opc == 4:
         print(" -- Eliminar una película -- ")
-        eliminar_pelicula = int(input("Ingrese id de película a eliminar."))
+        eliminar_pelicula = buscar_pelicula("Ingrese nombre de película a eliminar: ")
 
-        if i['id'] == eliminar_pelicula:
-          datos["peliculas"].remove  
-
+        if eliminar_pelicula == False:
+            print("No se ha podido encontrar el título.")
+            continue
+        else:
+            datos["peliculas"].remove(eliminar_pelicula)
+            print("Se ha eliminado la película exitosamente.")
     elif opc == 5:
         print("Saliendo del programa...")
         break
